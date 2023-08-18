@@ -4,7 +4,7 @@ const minutosEl = document.getElementById('minutos');
 const segundosEl = document.getElementById('segundos');
 
 
-const verano = '21 Dec'
+const verano = '21 Dec 2023'
 
 function cuentaRegresiva(){
     const fechaVerano = new Date(verano);
