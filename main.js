@@ -3,14 +3,16 @@ const horasEl = document.getElementById('horas');
 const minutosEl = document.getElementById('minutos');
 const segundosEl = document.getElementById('segundos');
 
-
-const verano = '21 Dec 2023'
-
 function cuentaRegresiva(){
-    const fechaVerano = new Date(verano);
     const fechaActual = new Date();
+    const proximo21Diciembre = new Date(fechaActual.getFullYear(), 11, 21); // December is 11 (0-based index)
 
-    const segundosTotales = (fechaVerano - fechaActual) / 1000;
+    // If today's date is after December 21st, target next year's December 21st
+    if (fechaActual > proximo21Diciembre) {
+        proximo21Diciembre.setFullYear(proximo21Diciembre.getFullYear() + 1);
+    }
+
+    const segundosTotales = (proximo21Diciembre - fechaActual) / 1000;
 
     const dias = Math.floor(segundosTotales / 3600 / 24)
     const horas = Math.floor(segundosTotales / 3600) % 24;
@@ -25,7 +27,6 @@ function cuentaRegresiva(){
 
 function formatTime(time){
     return time < 10 ? `0${time}` : time;
-//primer llamado
 }
 
 cuentaRegresiva();
